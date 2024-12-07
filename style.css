@@ -1,0 +1,61 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* ========== button welcome ========== */
+.btn {
+    padding: 1.1em 2em;
+    background: none;
+    border: 2px solid #fff;
+    font-size: 15px;
+    color: #131313;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    border-radius: 30px;
+    background-color: #ffd900;
+    font-weight: bolder;
+}
+
+.btn:before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 120%;
+    background-color: #ffa600;
+    top: 50%;
+    transform: skewX(30deg) translate(-150%, -50%);
+    transition: all 0.5s;
+}
+
+.btn:hover {
+    background-color: #4cc9f0;
+    color: #fff;
+}
+
+.btn:hover::before {
+    transform: skewX(30deg) translate(150%, -50%);
+    transition-delay: 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.9);
+}
+
+/* ========== navbar ========== */
+.navbar {
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.navbar.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ========== testimoni ========== */
+.carousel-item {
+    transition: transform 0.5s ease-in-out;
+}
