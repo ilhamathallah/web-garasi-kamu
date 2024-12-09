@@ -92,9 +92,8 @@ setInterval(showNextItem, 5000);
 
 // ========================================================== navbar
 const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-// Toggle the mobile menu visibility when the hamburger button is clicked
-hamburger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('-translate-x-full');
-});
+    hamburger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
