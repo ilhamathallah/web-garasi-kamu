@@ -60,4 +60,11 @@ body {
     transition: transform 0.5s ease-in-out;
 }
 
-/* ========== navbar ============= */
+/* ========== carousel ============= */
+[data-carousel-slide-to][aria-current="true"] {
+    background-color: #3fa0fa; /* Warna biru */
+}
+
+[data-carousel-slide-to][aria-current="false"] {
+    background-color: #d1d5db; /* Warna abu-abu */
+}

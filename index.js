@@ -2,8 +2,8 @@ const navbar = document.getElementById('navbar');
 
 // Fungsi untuk memantau scroll
 window.onscroll = function () {
-  // Jika pengguna menggulir lebih dari 50px, tampilkan navbar
-  if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+  // Jika pengguna menggulir lebih dari 500px, tampilkan navbar
+  if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
     navbar.classList.add('visible');
   } else {
     navbar.classList.remove('visible');
@@ -91,9 +91,57 @@ nextBtn.addEventListener('click', showNextItem);
 setInterval(showNextItem, 5000);
 
 // ========================================================== navbar
-const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
 
-    hamburger.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
+const contentIdentity = document.getElementById('content_identity');
+const items = Array.from(contentIdentity.children);
+const speed = 0.3; // Kecepatan animasi, semakin besar semakin cepat
+
+let scrollAmount = 0;
+
+function animate() {
+  scrollAmount += speed;
+
+  if (scrollAmount >= items[0].offsetWidth) {
+    contentIdentity.appendChild(items[0]); // Pindahkan elemen pertama ke akhir
+    scrollAmount = 0; // Reset scroll amount
+  }
+
+  contentIdentity.style.transform = `translateX(-${scrollAmount}px)`;
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+// ========================================================= carousel
+const carousel = document.getElementById("carousel");
+const prevButton = document.getElementById("prev");
+const nextButton = document.getElementById("next");
+
+let scrollPosition = 0;
+
+prevButton.addEventListener("click", () => {
+  const cardWidth = document.querySelector(".w-full").offsetWidth;
+  scrollPosition -= cardWidth;
+  if (scrollPosition < 0) {
+    scrollPosition = 0;
+  }
+  carousel.style.transform = `translateX(-${scrollPosition}px)`;
+});
+
+nextButton.addEventListener("click", () => {
+  const cardWidth = document.querySelector(".w-full").offsetWidth;
+  const maxScroll = carousel.scrollWidth - carousel.offsetWidth;
+  scrollPosition += cardWidth;
+  if (scrollPosition > maxScroll) {
+    scrollPosition = maxScroll;
+  }
+  carousel.style.transform = `translateX(-${scrollPosition}px)`;
+});
+
+prevButton.addEventListener("click", () => {
+  console.log("Prev button clicked");
+});
+
+nextButton.addEventListener("click", () => {
+  console.log("Next button clicked");
+});
